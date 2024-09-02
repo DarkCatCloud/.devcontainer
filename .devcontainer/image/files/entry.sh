@@ -1,0 +1,1 @@
+echo "Development container setup is complete!"
