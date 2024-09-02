@@ -19,8 +19,6 @@ RUN useradd -d /home/codespace -G wheel -m -s /usr/bin/zsh -U codespace
 COPY files/entry.sh /entry.sh
 RUN chmod +x /entry.sh
 
-ENTRYPOINT ["/entry.sh"]
-
 USER codespace
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
