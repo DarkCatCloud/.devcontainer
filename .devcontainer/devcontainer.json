@@ -1,4 +1,5 @@
 {
+  "name": "ay0ks' Development Container",
   "build": {
     "dockerfile": "image/Dockerfile"
   },
