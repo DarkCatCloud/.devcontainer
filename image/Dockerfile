@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM fedora:40
 
 RUN dnf upgrade -y
 RUN dnf group install -y \
@@ -16,14 +16,13 @@ RUN dnf makecache -y
 
 USER root
 RUN useradd -d /home/codespace -G wheel -m -s /usr/bin/zsh -U codespace
+COPY files/entry.sh /entry.sh
+RUN chmod +x /entry.sh
+
+ENTRYPOINT ["/entry.sh"]
 
 USER codespace
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 RUN dotnet tool install --global x
 RUN dotnet tool install --global dotnet-ef --version 8.0.8
-
-COPY files/entry.sh /entry.sh
-RUN chmod +x /entry.sh
-
-ENTRYPOINT ["/entry.sh"]
