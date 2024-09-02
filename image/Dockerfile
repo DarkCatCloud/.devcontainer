@@ -16,6 +16,7 @@ RUN dnf makecache -y
 
 USER root
 RUN useradd -d /home/codespace -G wheel -m -s /usr/bin/zsh -U codespace
+RUN echo "codespace:codespace" | chpasswd
 
 USER codespace
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
