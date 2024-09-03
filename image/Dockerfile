@@ -17,7 +17,7 @@ RUN dnf -y install systemd && dnf clean all && \
   rm -f /lib/systemd/system/basic.target.wants/* ;\
   rm -f /lib/systemd/system/anaconda.target.wants/*
 
-VOLUME ["/sys/fs/cgroup"]
+VOLUME ["/sys/fs/cgroup", "/var/run/docker.sock"]
 CMD ["/sbin/init"]
 
 RUN dnf group install -y \
