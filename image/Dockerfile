@@ -47,10 +47,4 @@ RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 RUN dotnet tool install --global x
 RUN dotnet tool install --global dotnet-ef --version 8.0.8
-RUN mkdir UserSolution
-WORKDIR /home/codespace/UserSolution
-RUN dotnet new sln --name UserSolution
-RUN dotnet new console --name User.DummyApplication
-RUN dotnet workload restore
 RUN dotnet workload install aspire
-WORKDIR /home/codespace
