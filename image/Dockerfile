@@ -21,6 +21,8 @@ USER root
 RUN useradd -d /home/codespace -G wheel -m -s /usr/bin/zsh -U codespace
 RUN echo "codespace:codespace" | chpasswd
 
+ENTRYPOINT ["/usr/sbin/init"]
+
 USER codespace
 RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
