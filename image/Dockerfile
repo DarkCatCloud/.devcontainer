@@ -6,20 +6,9 @@ LABEL \
   maintainer="Dimitriy \"ay0ks\" <ay0o0ks000@gmail.com>" \
   repository="https://github.com/ay0ks/.devcontainer"
 
-RUN dnf upgrade -y
-RUN dnf -y install systemd && dnf clean all && \
-  (cd /lib/systemd/system/sysinit.target.wants/ ; for i in * ; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i ; done) ; \
-  rm -f /lib/systemd/system/multi-user.target.wants/* ;\
-  rm -f /etc/systemd/system/*.wants/* ;\
-  rm -f /lib/systemd/system/local-fs.target.wants/* ; \
-  rm -f /lib/systemd/system/sockets.target.wants/*udev* ; \
-  rm -f /lib/systemd/system/sockets.target.wants/*initctl* ; \
-  rm -f /lib/systemd/system/basic.target.wants/* ;\
-  rm -f /lib/systemd/system/anaconda.target.wants/*
-
 VOLUME ["/sys/fs/cgroup", "/var/run/docker.sock"]
-CMD ["/sbin/init"]
 
+RUN dnf upgrade -y
 RUN dnf group install -y \
   "Fedora Server Edition" "Development and Creative Workstation"
 RUN dnf group install -y \
