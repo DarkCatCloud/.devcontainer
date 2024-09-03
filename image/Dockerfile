@@ -10,9 +10,12 @@ RUN dnf group install -y \
   "Headless Management" "Network Servers" "RPM Development Tools" \
   "Security Lab" "System Tools" "Text-based Internet"
 RUN dnf install -y dotnet-sdk-8.0 aspnetcore-runtime-8.0
-RUN dnf install -y zsh
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
+RUN dnf install -y zsh just fastfetch git-lfs
 RUN dnf distro-sync -y
 RUN dnf makecache -y
+RUN git lfs install
+RUN curl -sSL https://get.docker.com/ | sudo sh
 
 USER root
 RUN useradd -d /home/codespace -G wheel -m -s /usr/bin/zsh -U codespace
