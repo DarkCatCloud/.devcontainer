@@ -28,3 +28,5 @@ RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 RUN dotnet tool install --global x
 RUN dotnet tool install --global dotnet-ef --version 8.0.8
+RUN dotnet workload restore
+RUN dotnet workload install aspire
